@@ -8,3 +8,4 @@ resource "aws_instance" "MyFirstInstance" {
     ami = "ami-097261bd06e355492"
     instance_type = "t2.micro"
 }
+ 
