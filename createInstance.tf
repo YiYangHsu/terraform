@@ -18,11 +18,11 @@ data "aws_ami" "latest-amazon-linux-image" {
     }
 }
 
-output "ec2_instance_id" {
-    value = aws_ami.latest-amazon-linux-image
-}
-# resource "aws_instance" "MyFirstInstance" {
-#     ami = "	ami-0a561b65214a47cac"
-#     instance_type = "t2.micro"
+# output "ec2_instance_id" {
+#     value = data.aws_ami.latest-amazon-linux-image.id
 # }
+resource "aws_instance" "MyFirstInstance" {
+    ami = data.aws_ami.latest-amazon-linux-image.id
+    instance_type = "t2.micro"
+}
  
