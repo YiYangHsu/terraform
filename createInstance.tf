@@ -21,7 +21,7 @@ resource "aws_instance" "MyFirstInstance" {
     ami = data.aws_ami.latest-amazon-linux-image.id
     instance_type = "t2.micro"
 
-    tags {
+    tags = {
         Name = "threedemoinstance-${count.index}"
     }
 }
