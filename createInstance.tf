@@ -17,12 +17,12 @@ data "aws_ami" "latest-amazon-linux-image" {
 #     value = data.aws_ami.latest-amazon-linux-image.id
 # }
 resource "aws_instance" "MyFirstInstance" {
-    count = 3
+
     ami = data.aws_ami.latest-amazon-linux-image.id
     instance_type = "t2.micro"
 
     tags = {
-        Name = "threedemoinstance-${count.index}"
+        Name = "demoinstance"
     }
 }
  
