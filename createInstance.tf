@@ -18,13 +18,13 @@ data "aws_ami" "latest-amazon-linux-image" {
 # }
 resource "aws_instance" "MyFirstInstance" {
 
-    ami = data.aws_ami.latest-amazon-linux-image.id
+    # ami = data.aws_ami.latest-amazon-linux-image.id
+    ami = lookup(var.AMIS, var.AWS_REGION)
     instance_type = "t2.micro"
 
     tags = {
         Name = "demoinstance"
     }
 
-    security_groups = "${var.Security_Group}"
 }
  
