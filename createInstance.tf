@@ -8,26 +8,26 @@ resource "aws_key_pair" "levelup_key" {
 data "aws_ami" "latest-amazon-linux-image" {
     most_recent = true
 
-    filter {
-        name = "name"
-        values = ["ubuntu/images/hvm-ssd/ubuntu-xenial-20.08-amd64-server-*"]
-    }
-
-    filter {
-        name = "virtualization - type"
-        vaules = ["hvm"]
-    }
-
-    owners = ["amazon"]
-    # filter {
-    #     name = "owner-alias"
-    #     values = ["amazon"]
-    # }
-
     # filter {
     #     name = "name"
-    #     values = ["amzn2-ami-hvm*"]
+    #     values = ["ubuntu/images/hvm-ssd/ubuntu-xenial-20.08-amd64-server-*"]
     # }
+
+    # filter {
+    #     name = "virtualization - type"
+    #     vaules = ["hvm"]
+    # }
+
+    owners = ["amazon"]
+    filter {
+        name = "owner-alias"
+        values = ["amazon"]
+    }
+
+    filter {
+        name = "name"
+        values = ["amzn2-ami-hvm*"]
+    }
 }
 
 output "ec2_instance_id" {
