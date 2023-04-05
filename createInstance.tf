@@ -5,38 +5,38 @@ resource "aws_key_pair" "levelup_key" {
 }
 
 
-# data "aws_ami" "latest-amazon-linux-image" {
-#     most_recent = true
+data "aws_ami" "latest-amazon-linux-image" {
+    most_recent = true
 
-#     filter {
-#         name = "name"
-#         values = ["ubuntu/images/hvm-ssd/ubuntu-xenial-20.08-amd64-server-*"]
-#     }
+    filter {
+        name = "name"
+        values = ["ubuntu/images/hvm-ssd/ubuntu-xenial-20.08-amd64-server-*"]
+    }
 
-#     filter {
-#         name = "virtualization - type"
-#         vaules = ["hvm"]
-#     }
+    filter {
+        name = "virtualization - type"
+        vaules = ["hvm"]
+    }
 
-#     owners = ["amazon"]
-#     # filter {
-#     #     name = "owner-alias"
-#     #     values = ["amazon"]
-#     # }
+    owners = ["amazon"]
+    # filter {
+    #     name = "owner-alias"
+    #     values = ["amazon"]
+    # }
 
-#     # filter {
-#     #     name = "name"
-#     #     values = ["amzn2-ami-hvm*"]
-#     # }
-# }
+    # filter {
+    #     name = "name"
+    #     values = ["amzn2-ami-hvm*"]
+    # }
+}
 
-# output "ec2_instance_id" {
-#     value = data.aws_ami.latest-amazon-linux-image.id
-# }
+output "ec2_instance_id" {
+    value = data.aws_ami.latest-amazon-linux-image.id
+}
 resource "aws_instance" "MyFirstInstance" {
 
-    # ami = data.aws_ami.latest-amazon-linux-image.id
-    ami = lookup(var.AMIS, var.AWS_REGION)
+    ami = data.aws_ami.latest-amazon-linux-image.id
+    # ami = lookup(var.AMIS, var.AWS_REGION)
     instance_type = "t2.micro"
     key_name = aws_key_pair.levelup_key.key_name
 
