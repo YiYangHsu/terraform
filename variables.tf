@@ -17,7 +17,7 @@ variable "AMIS" {
     }
 }
 
-variable "PATH_TOPRIVATE_KEY" {
+variable "PATH_TO_PRIVATE_KEY" {
     default = "levelup_key"
 }
 
